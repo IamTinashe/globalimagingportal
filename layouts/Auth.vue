@@ -44,9 +44,11 @@
           </ul>
           <ul>
             <li class="relative px-6 py-3">
-              <NuxtLink
+              <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                to="/schedule-for-support"
+                href="https://simbasupport.com/support/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg
                   class="w-5 h-5"
@@ -63,7 +65,7 @@
                   ></path>
                 </svg>
                 <span class="ml-4">Schedule For Support</span>
-              </NuxtLink>
+              </a>
             </li>
             <li class="relative px-6 py-3">
               <NuxtLink

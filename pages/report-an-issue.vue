@@ -491,15 +491,124 @@
 
           <!-- New Table -->
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 overflow-x-auto">
-              <div class="flex justify-center">
+            <div
+              class="
+                px-4
+                py-3
+                mb-8
+                bg-white
+                rounded-lg
+                shadow-md
+                dark:bg-gray-800
+                overflow-x-auto
+              "
+            >
+              <div class="flex justify-center my-5">
+                <label class="float-left w-3/5 mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">
+                    Associated Product
+                  </span>
+                  <select
+                    class="
+                      w-full
+                      mt-1
+                      text-sm
+                      dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700
+                      form-select
+                      focus:border-purple-400
+                      focus:outline-none
+                      focus:shadow-outline-purple
+                      dark:focus:shadow-outline-gray
+                    "
+                    v-for="(product, index) in products"
+                    :key="index"
+                    @change="setProduct(product)"
+                  >
+                    <option>{{ product.Name }}</option>
+                  </select>
+                </label>
+              </div>
+              <div class="flex justify-center my-5">
                 <label class="text-sm float-left w-3/5">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
-                <input
-                  class="mt-1 w-full text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane Doe"
-                />
-              </label>
+                  <span class="text-gray-700 dark:text-gray-400">Subject</span>
+                  <input
+                    class="
+                      mt-1
+                      w-full
+                      text-sm
+                      dark:border-gray-600 dark:bg-gray-700
+                      focus:border-purple-400
+                      focus:outline-none
+                      focus:shadow-outline-purple
+                      dark:text-gray-300 dark:focus:shadow-outline-gray
+                      form-input
+                    "
+                    placeholder="Subject"
+                    v-model="caseObj.Subject"
+                  />
+                </label>
+              </div>
+              <div class="flex justify-center my-5">
+                <label class="float-left w-3/5 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400"
+                    >Description</span
+                  >
+                  <textarea
+                    class="
+                      float-left
+                      w-full
+                      mt-1
+                      text-sm
+                      dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700
+                      form-textarea
+                      focus:border-purple-400
+                      focus:outline-none
+                      focus:shadow-outline-purple
+                      dark:focus:shadow-outline-gray
+                    "
+                    rows="3"
+                    placeholder="Description"
+                    v-model="caseObj.Description"
+                  ></textarea>
+                </label>
+              </div>
+
+              <div class="flex justify-center my-5">
+                <button
+                  class="
+                    flex
+                    items-center
+                    justify-between
+                    px-4
+                    py-2
+                    text-sm
+                    font-medium
+                    leading-5
+                    text-white
+                    transition-colors
+                    duration-150
+                    bg-purple-600
+                    border border-transparent
+                    rounded-lg
+                    active:bg-purple-600
+                    hover:bg-purple-700
+                    focus:outline-none focus:shadow-outline-purple
+                  "
+                  @click="submitCase()"
+                >
+                  Report Issue
+                  <svg
+                    class="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -526,20 +635,22 @@ export default {
       dark: "",
       user: {},
       products: [],
-      case: {
-        Subject: '',
-        Description: '',
-        SuppliedEmail: '',
-        Handler_in_Contacts__c: '0031Y00006B3QTVQA3', //default to John Nhamoinesu
-        ContactId: '', //id of contact
-        Related_SKU__c: '' //selected product from product list
+      caseObj: {
+        Subject: "",
+        Description: "",
+        SuppliedEmail: "",
+        Handler_in_Contacts__c: "0031Y00006B3QTVQA3", //default to John Nhamoinesu
+        ContactId: "", //id of contact
+        Related_SKU__c: "", //selected product from product list
       },
     };
   },
   async mounted() {
     this.dark = this.getThemeFromLocalStorage();
     await authentication.login();
-    let data = await products.getProductByEmail('drprada@mesquitedentalsolutions.com');
+    let data = await products.getProductByEmail(
+      "drprada@mesquitedentalsolutions.com"
+    );
     this.products = data.records;
   },
   methods: {
@@ -589,11 +700,13 @@ export default {
     setThemeToLocalStorage(value) {
       window.localStorage.setItem("dark", value);
     },
-
-    async reportCase(){
-      let response = await cases.reportCase(this.case);
+    setProduct(product) {
+      this.caseObj.Related_SKU__c = product.Id;
+    },
+    async reportCase() {
+      //let response = await cases.reportCase(this.caseObj);
       console.log(response);
-    }
+    },
   },
 };
 </script>
