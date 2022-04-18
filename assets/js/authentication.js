@@ -14,6 +14,7 @@ class Authentication {
   }
 
   static login(){
+    let token = null;
     var conn = new jsforce.Connection({
       oauth2 : {
         loginUrl : process.env.BASE_URL,
@@ -25,7 +26,10 @@ class Authentication {
     conn.login(process.env.USERNAME, process.env.PASSWORD, function(err, userInfo) {
       if (err) { return console.error(err); }
       localStorage.setItem("sf_token", conn.accessToken);
+      token = conn.accessToken;
     });
+
+    return token;
   }
 }
 

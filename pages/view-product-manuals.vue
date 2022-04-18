@@ -580,7 +580,6 @@ export default {
     await authentication.login();
     let data = await products.getProductByEmail('drprada@mesquitedentalsolutions.com');
     this.products = data.records;
-    console.log(this.products)
   },
   methods: {
     toggleTheme() {

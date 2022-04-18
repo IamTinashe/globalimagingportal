@@ -458,7 +458,7 @@
           <h2
             class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
           >
-            My Products
+            My Invoices
           </h2>
           <!-- CTA -->
           <a
@@ -580,7 +580,6 @@ export default {
     await authentication.login();
     let data = await products.getProductByEmail('drprada@mesquitedentalsolutions.com');
     this.products = data.records;
-    console.log(this.products)
   },
   methods: {
     toggleTheme() {

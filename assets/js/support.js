@@ -3,9 +3,9 @@ import authentication from "@/assets/js/authentication";
 const BASE_URL = process.env.BASE_URL;
 let TOKEN = null;
 
-class Products {
+class Support {
   
-  static getProductByEmail(email) {
+  static schedule(data) {
     return new Promise(async (resolve, reject) => {
       try {
         if(localStorage.getItem("sf_token") != null){
@@ -17,7 +17,7 @@ class Products {
           headers: { 'Authorization': 'Bearer ' + TOKEN }
         }
         let api = "/services/data/v54.0/query?q=SELECT+FIELDS(ALL)+FROM+Product2+WHERE+Buyer_email_from_contacts__c+=+'"+email+"'+LIMIT+200";
-        let response = await axios.get(BASE_URL + api, config);
+        let response = await axios.post(BASE_URL + api, data, config);
         resolve(response.data);
       } catch (error) {
         reject(error.response)
@@ -26,4 +26,4 @@ class Products {
   }
 }
 
-export default Products;
+export default Support;

@@ -7,7 +7,7 @@ export default {
     REDIRECT_URI: "https://wadeamg.my.salesforce.com/services/oauth2/success",
     GRANT_TYPE: "password",
     USERNAME: "office@wadeamg.com",
-    PASSWORD: "Zimglobalusa2022!",
+    PASSWORD: "ZimTX2022@!",
     TOKEN_URL: "https://login.salesforce.com/services/oauth2/token"
   },
   helmet: {
@@ -54,9 +54,34 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
     '@nuxt/content',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/auth'
   ],
   axios: {
     baseURL: '/',
+  },
+  auth: {
+    strategies: {
+      facebook: {
+        // donot add clientsecret/faceboooksecret anywhere as it will be visible on client side and will invite unwanted attention
+        client_id: 'Enter your facebook clientid here',
+        userinfo_endpoint:
+          'https://graph.facebook.com/me?fields=about,name,picture.typr(large){url},email,birthday',
+        scope: ['public_profile', 'email', 'user_birthday']
+      },
+      google: {
+        client_id: 'Enter your google clientid here'
+      },
+      salesforce: {
+      }
+    },
+    redirect: {
+      login: '/registration',
+      logout: '/registration',
+      callback: '/registration',
+      home: '/'
+    },
+    plugins: ['~/plugins/extendauth.js']
   },
   
   pwa: {

@@ -20,9 +20,9 @@
                 class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                 aria-hidden="true"
               ></span>
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="index.html"
+                to="/"
               >
                 <svg
                   class="w-5 h-5"
@@ -39,14 +39,14 @@
                   ></path>
                 </svg>
                 <span class="ml-4">My Products</span>
-              </a>
+              </NuxtLink>
             </li>
           </ul>
           <ul>
             <li class="relative px-6 py-3">
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                to="/schedule-for-support"
               >
                 <svg
                   class="w-5 h-5"
@@ -63,12 +63,12 @@
                   ></path>
                 </svg>
                 <span class="ml-4">Schedule For Support</span>
-              </a>
+              </NuxtLink>
             </li>
             <li class="relative px-6 py-3">
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="cards.html"
+                to="/suggest-improvements"
               >
                 <svg
                   class="w-5 h-5"
@@ -85,12 +85,12 @@
                   ></path>
                 </svg>
                 <span class="ml-4">Suggest Improvements</span>
-              </a>
+              </NuxtLink>
             </li>
             <li class="relative px-6 py-3">
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="charts.html"
+                to="/take-a-survey"
               >
                 <svg
                   class="w-5 h-5"
@@ -108,12 +108,12 @@
                   <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                 </svg>
                 <span class="ml-4">Take a Survey</span>
-              </a>
+              </NuxtLink>
             </li>
             <li class="relative px-6 py-3">
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="buttons.html"
+                to="/report-an-issue"
               >
                 <svg
                   class="w-5 h-5"
@@ -130,12 +130,12 @@
                   ></path>
                 </svg>
                 <span class="ml-4">Report an Issue</span>
-              </a>
+              </NuxtLink>
             </li>
             <li class="relative px-6 py-3">
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="modals.html"
+                to="/view-invoices"
               >
                 <svg
                   class="w-5 h-5"
@@ -152,12 +152,12 @@
                   ></path>
                 </svg>
                 <span class="ml-4">View Invoices</span>
-              </a>
+              </NuxtLink>
             </li>
             <li class="relative px-6 py-3">
-              <a
+              <NuxtLink
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="tables.html"
+                to="/view-product-manuals"
               >
                 <svg
                   class="w-5 h-5"
@@ -172,7 +172,7 @@
                   <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
                 <span class="ml-4">View Product Manuals</span>
-              </a>
+              </NuxtLink>
             </li>
           </ul>
           <div class="px-6 my-6">

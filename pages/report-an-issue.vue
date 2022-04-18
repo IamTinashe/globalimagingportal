@@ -458,7 +458,7 @@
           <h2
             class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
           >
-            My Products
+            Report an Issue
           </h2>
           <!-- CTA -->
           <a
@@ -492,63 +492,7 @@
           <!-- New Table -->
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
-              <table class="w-full whitespace-no-wrap">
-                <thead>
-                  <tr
-                    class="
-                      text-xs
-                      font-semibold
-                      tracking-wide
-                      text-left text-gray-500
-                      uppercase
-                      border-b
-                      dark:border-gray-700
-                      bg-gray-50
-                      dark:text-gray-400 dark:bg-gray-800
-                    "
-                  >
-                    <th class="px-4 py-3">Product Name</th>
-                    <th class="px-4 py-3">Shipping</th>
-                    <th class="px-4 py-3">Status</th>
-                    <th class="px-4 py-3">Date Purchased</th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="
-                    bg-white
-                    divide-y
-                    dark:divide-gray-700 dark:bg-gray-800
-                  "
-                >
-                  <tr class="text-gray-700 dark:text-gray-400" v-for="(product, index) in products" :key="index">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <div>
-                          <p class="font-semibold">{{product.Name}}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">{{product.Carrier_Tracking_PRO__c}}</td>
-                    <td class="px-4 py-3 text-xs">
-                      <span
-                        class="
-                          px-2
-                          py-1
-                          font-semibold
-                          leading-tight
-                          text-green-700
-                          bg-green-100
-                          rounded-full
-                          dark:bg-green-700 dark:text-green-100
-                        "
-                      >
-                        {{product.Status__c}}
-                      </span>
-                    </td>
-                    <td class="px-4 py-3 text-sm">{{product.Date_Sold__c}}</td>
-                  </tr>
-                </tbody>
-              </table>
+
             </div>
           </div>
         </div>
@@ -572,7 +516,16 @@ export default {
       isModalOpen: false,
       trapCleanup: null,
       dark: "",
-      products: []
+      user: {},
+      products: [],
+      case: {
+        Subject: '',
+        Description: '',
+        SuppliedEmail: '',
+        Handler_in_Contacts__c: '0031Y00006B3QTVQA3', //default to John Nhamoinesu
+        ContactId: '', //id of contact
+        Related_SKU__c: '' //selected product from product list
+      },
     };
   },
   async mounted() {
@@ -580,7 +533,6 @@ export default {
     await authentication.login();
     let data = await products.getProductByEmail('drprada@mesquitedentalsolutions.com');
     this.products = data.records;
-    console.log(this.products)
   },
   methods: {
     toggleTheme() {
@@ -630,9 +582,9 @@ export default {
       window.localStorage.setItem("dark", value);
     },
 
-    async getCases(){
-      let data = await cases.getAllCases();
-      console.log(data);
+    async reportCase(){
+      let response = await cases.reportCase(this.case);
+      console.log(response);
     }
   },
 };
