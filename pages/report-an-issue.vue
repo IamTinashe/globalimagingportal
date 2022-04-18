@@ -491,8 +491,16 @@
 
           <!-- New Table -->
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 overflow-x-auto">
+              <div class="flex justify-center">
+                <label class="text-sm float-left w-3/5">
+                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <input
+                  class="mt-1 w-full text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="Jane Doe"
+                />
+              </label>
+              </div>
             </div>
           </div>
         </div>
