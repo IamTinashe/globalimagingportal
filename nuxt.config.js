@@ -8,7 +8,8 @@ export default {
     GRANT_TYPE: "password",
     USERNAME: "office@wadeamg.com",
     PASSWORD: "ZimTX2022@!",
-    TOKEN_URL: "https://login.salesforce.com/services/oauth2/token"
+    TOKEN_URL: "https://login.salesforce.com/services/oauth2/token",
+    TOKEN: "00DF0000000goX5!AQEAQH1GFwoeG1hC4B52appK6g3fHuoS.e6a5cwEj.hFl7qADi7lyTsFfTXNlZZej0e7a29h7D5tqiFbOjtpL6xDGU5GklZr"
   },
   helmet: {
     dnsPrefetchControl: true,
